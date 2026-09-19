@@ -16,3 +16,4 @@ android/local.properties
 # Projects / output
 *.mp4
 scratch/
+vendor/

@@ -17,10 +17,28 @@ unattended build.
 
 ## Setup
 
+Two system prerequisites this machine did not have:
+
+```bash
+sudo apt install libxcb-cursor0   # Qt 6.5+ will not open a window without it
+sudo apt install just             # or run the commands under each target by hand
+```
+
+Until `libxcb-cursor0` is installed system-wide, a copy extracted into
+`vendor/lib/` is used instead:
+
+```bash
+DISPLAY=:0 LD_LIBRARY_PATH=$PWD/vendor/lib desktop/.venv/bin/python -m stopmotion
+```
+
 ```bash
 just setup          # creates desktop/.venv and installs PySide6 + pytest
 just android-build  # builds the debug APK
 ```
+
+Without `just`, the equivalents are `desktop/.venv/bin/python -m stopmotion`,
+`cd android && ./gradlew assembleDebug`, and
+`QT_QPA_PLATFORM=offscreen desktop/.venv/bin/python -m pytest desktop/tests -q`.
 
 `just setup` bootstraps pip from bootstrap.pypa.io because this machine has no
 `python3-venv`/`ensurepip` and no system pip. If you ever
