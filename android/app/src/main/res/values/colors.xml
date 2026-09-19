@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="overlay_scrim">#A6000000</color>
+    <color name="status_text">#FFFFFFFF</color>
+    <color name="status_ok">#FF66DD88</color>
+    <color name="status_warn">#FFE0B040</color>
+    <color name="status_bad">#FFE06060</color>
+</resources>

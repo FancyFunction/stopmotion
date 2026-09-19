@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Stopmotion Camera</string>
+    <string name="status_placeholder">starting…</string>
+    <string name="permission_rationale">Camera access is required. Grant it in Settings and restart the app.</string>
+    <string name="preview_description">Live camera preview</string>
+</resources>
