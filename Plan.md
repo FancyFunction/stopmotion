@@ -242,3 +242,21 @@ recent projects, error surfacing for clamped settings.
 | Thermal throttling / battery drain over a long shoot | USB charges while connected, but monitor; surface a warning if frame interval degrades |
 | adb throughput on USB 2.0 | Measured in M1 before anything depends on it |
 | Manual settings silently clamped by the device | `CONFIG_ACK` returns what was actually applied; UI shows the real value |
+
+## 8. Deviations from this plan
+
+This plan was written before implementation. Where reality disagreed, the code
+follows reality and [DECISIONS.md](DECISIONS.md) records why. The significant
+ones:
+
+- **`uv` was replaced** by a venv with pip bootstrapped from `bootstrap.pypa.io`
+  (no `ensurepip`, no system pip, no sudo). See DECISIONS #1.
+- **The export command gained `-frames:v <sum(holds)>`.** The concat-demuxer
+  recipe in section 6 emits the wrong frame count without it. See DECISIONS #5.
+- **The Android manifest needs `INTERNET`** for a loopback `ServerSocket`, or the
+  bind fails with `EPERM`. See DECISIONS #4.
+- **White balance is an AWB preset plus lock, not a kelvin value** — the manifest
+  field is `awb_mode`, not `wb_kelvin` as section 5 originally showed.
+- **The manifest gained `next_id`** so frame ids are never recycled.
+- Preview on the test device (Galaxy S23) sustains **26 fps at 1080p**, above the
+  15 fps this plan assumed.
