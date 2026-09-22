@@ -1,0 +1,1 @@
+cd /local-development/stopmotion && DISPLAY=:0 LD_LIBRARY_PATH=$PWD/vendor/lib desktop/.venv/bin/python -m stopmotion
